@@ -43,10 +43,10 @@ const LabelDesigner: React.FC<LabelDesignerProps> = () => {
 
     switch (foldType) {
       case 'left-right':
-        finalWidth += 0.5; // 0.25 inch extra on each side
+        finalWidth += 0.7; // 0.25 + 0.1 inch extra on each side
         break;
       case 'up-down':
-        finalHeight += 0.5; // 0.25 inch extra on top and bottom
+        finalHeight += 0.7; // 0.25 + 0.1 inch extra on top and bottom
         break;
       case 'central':
       default:
@@ -107,8 +107,10 @@ const LabelDesigner: React.FC<LabelDesignerProps> = () => {
     // Draw the final label boundary
     ctx.strokeRect(labelX, labelY, finalWidthPx, finalHeightPx);
 
-    // Draw the image area
-    ctx.strokeRect(imageX, imageY, imageWidth, imageHeight);
+    // Draw the image area (only for central fold)
+    if (foldType === 'central') {
+      ctx.strokeRect(imageX, imageY, imageWidth, imageHeight);
+    }
 
     // Draw uploaded image if available
     if (uploadedImage) {
@@ -168,7 +170,7 @@ const LabelDesigner: React.FC<LabelDesignerProps> = () => {
     ctx.strokeStyle = '#ef4444';
     ctx.fillStyle = '#ef4444';
     ctx.lineWidth = 1;
-    ctx.font = 'bold 12px "Courier New", monospace';
+    ctx.font = 'bold 16px "Courier New", monospace';
 
     // Width marking (bottom)
     const bottomY = labelY + finalHeightPx + 20;
