@@ -350,7 +350,7 @@ const LabelDesigner: React.FC<LabelDesignerProps> = () => {
 
         {/* Canvas Area */}
         <Card className="lg:col-span-3 p-6">
-          <h2 className="text-xl font-semibold mb-4">A4 Landscape Preview</h2>
+          <h2 className="text-xl font-semibold mb-4">Label Preview</h2>
           <div className="border rounded-lg overflow-hidden bg-canvas-bg">
             <canvas
               ref={canvasRef}
