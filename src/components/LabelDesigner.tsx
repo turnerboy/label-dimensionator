@@ -170,7 +170,7 @@ const LabelDesigner: React.FC<LabelDesignerProps> = () => {
     ctx.strokeStyle = '#ef4444';
     ctx.fillStyle = '#ef4444';
     ctx.lineWidth = 1;
-    ctx.font = 'bold 16px "Courier New", monospace';
+    ctx.font = 'bold 20px "Courier New", monospace';
 
     // Width marking (bottom)
     const bottomY = labelY + finalHeightPx + 20;
