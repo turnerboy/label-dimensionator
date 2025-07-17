@@ -126,44 +126,38 @@ const LabelDesigner: React.FC<LabelDesignerProps> = () => {
     // Draw fold lines
     if (foldType === 'central') {
       const centerY = labelY + finalHeightPx / 2;
-      ctx.setLineDash([5, 5]);
       ctx.beginPath();
       ctx.moveTo(labelX, centerY);
       ctx.lineTo(labelX + finalWidthPx, centerY);
       ctx.stroke();
-      ctx.setLineDash([]);
     } else if (foldType === 'left-right') {
       const leftFoldX = labelX + inchesToPixels(0.25);
       const rightFoldX = labelX + finalWidthPx - inchesToPixels(0.25);
-      ctx.setLineDash([5, 5]);
       ctx.beginPath();
       ctx.moveTo(leftFoldX, labelY);
       ctx.lineTo(leftFoldX, labelY + finalHeightPx);
       ctx.moveTo(rightFoldX, labelY);
       ctx.lineTo(rightFoldX, labelY + finalHeightPx);
       ctx.stroke();
-      ctx.setLineDash([]);
     } else if (foldType === 'up-down') {
       const topFoldY = labelY + inchesToPixels(0.25);
       const bottomFoldY = labelY + finalHeightPx - inchesToPixels(0.25);
-      ctx.setLineDash([5, 5]);
       ctx.beginPath();
       ctx.moveTo(labelX, topFoldY);
       ctx.lineTo(labelX + finalWidthPx, topFoldY);
       ctx.moveTo(labelX, bottomFoldY);
       ctx.lineTo(labelX + finalWidthPx, bottomFoldY);
       ctx.stroke();
-      ctx.setLineDash([]);
     }
 
     // Draw title (top left)
     ctx.fillStyle = '#000000';
-    ctx.font = 'bold 24px Arial'; // Using Arial as Helvetica fallback
+    ctx.font = 'bold 36px Arial';
     ctx.textAlign = 'left';
-    ctx.fillText(title, 40, 50);
+    ctx.fillText(title, 40, 55);
 
     // Draw dimensions (top right)
-    ctx.font = '16px Arial';
+    ctx.font = 'bold 16px "Courier New", monospace';
     ctx.textAlign = 'right';
     const rightMargin = A4_WIDTH - 40;
     ctx.fillText(`Final Width: ${finalDims.width}"`, rightMargin, 30);
@@ -174,7 +168,7 @@ const LabelDesigner: React.FC<LabelDesignerProps> = () => {
     ctx.strokeStyle = '#ef4444';
     ctx.fillStyle = '#ef4444';
     ctx.lineWidth = 1;
-    ctx.font = '12px Arial';
+    ctx.font = 'bold 12px "Courier New", monospace';
 
     // Width marking (bottom)
     const bottomY = labelY + finalHeightPx + 20;
